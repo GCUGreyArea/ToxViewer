@@ -1,6 +1,6 @@
 # TOX Client
 
-This is the main README.md file for the project. 
+This is the main README.md file for the project. I have saved the initial [`README.md`](resources/README.md) under resources as a tracibility of work item. 
 
 ## Basic functionality
 
