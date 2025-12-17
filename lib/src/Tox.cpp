@@ -76,9 +76,22 @@ void Tox::get_latest(Socket & client) {
     // Assign the message values
     mId = tox_id;
     mMsg = std::string(message, message_size);
+
+    // Cull the reating from the text
+    size_t pos = mMsg.find("Rating:");
+    if(pos > 0) {
+        int i=8;
+        while(isdigit(mMsg[pos+i])) {i++;}
+
+        std::string st = mMsg.substr(pos+8,pos+i);
+        mRating = atoi(st.c_str());
+    }
+    else {
+        mRating = 0;
+    }
+    
     delete [] message;
 }
-
 
 void Tox::pull(Socket & client) {
     // Ask for tox ID
@@ -164,6 +177,13 @@ void Tox::vote(Socket &client, bool upvote) {
     bytes = client.read_response_from_server(&mRating, sizeof(mRating));
     if(bytes < 0 || bytes != sizeof(mRating)) {
         throw std::runtime_error("Error reading upvote rating from server, bytes read: " + std::to_string(bytes));
+    }
+
+    if(upvote) {
+        mRating += 1;
+    }
+    else {
+        mRating += -1;
     }
 
     pull(client); // Refresh the tox message after voting
