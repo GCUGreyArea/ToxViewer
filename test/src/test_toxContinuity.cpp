@@ -3,6 +3,10 @@
 #include <tox_client.h>
 
 #include <string>
+#include <fstream>
+#include <cstdlib>
+
+
 
 // Maybe threading is messing up the socket connection? 
 // For wahtev er erason in TEST we need to open a new connection fo reach tox retrieval
@@ -17,28 +21,63 @@ TEST(testToxContinuity,testThatToxCanBeAccessedAfterCall) {
 
     // Conect to the server and pull a few tox    
     std::string addr = address;
-    // Socket client(addr, port);
 
     Tox first_tox;
-    get_tox(addr, port, first_tox);
-    // EXPECT_EQ(first_tox.getCode(), 65) << "Failed to get first tox";
+    EXPECT_NO_THROW(get_tox(addr, port, first_tox));
 
     Tox second_tox;
-    get_tox(addr, port, second_tox);
-    // EXPECT_EQ(second_tox.code, 65) << "Failed to get second tox";
+    EXPECT_NO_THROW(get_tox(addr, port, second_tox));
 
     Tox third_tox;
-    get_tox(addr, port, third_tox);
-    // EXPECT_EQ(third_tox.code, 65) << "Failed to get second tox";
-
-    // Assert that we have individual tox IDs - we know this test can fail!
-    // EXPECT_FALSE(first_tox == second_tox) << "Tox IDs match - first and second call";
-    // EXPECT_FALSE(third_tox == second_tox) << "Tox IDs match - third and first call";
-    // EXPECT_FALSE(first_tox == third_tox) << "Tox IDs match - first and third call";
+    EXPECT_NO_THROW(get_tox(addr, port, third_tox));
 
     // Print them out for visual inspection
     first_tox.print();
     second_tox.print();
     third_tox.print();
+}
 
+
+TEST(testToxContinuity,testThatToxCanBeSerialised) {
+    constexpr const char * address = "texttok.fzero.io";
+    constexpr const int port = 4000;
+
+    // Conect to the server and pull a few tox    
+    std::string addr = address;
+
+    Tox first_tox;
+    EXPECT_NO_THROW(get_tox(addr, port, first_tox));
+
+    Tox second_tox;
+    EXPECT_NO_THROW(get_tox(addr, port, second_tox));
+
+    Tox third_tox;
+    EXPECT_NO_THROW(get_tox(addr, port, third_tox));
+
+    std::ofstream f;
+
+    f.open("test.out",std::ios::out);
+
+    first_tox.serialise(f);
+    second_tox.serialise(f);
+    third_tox.serialise(f);
+
+    f.close();
+    std::ifstream i;
+
+    i.open("test.out",std::ios::in);
+
+    Tox t1;
+    Tox t2;
+    Tox t3;
+    t1.deserialise(i);
+    t2.deserialise(i);
+    t3.deserialise(i);
+
+    ASSERT_TRUE(t1 == first_tox);
+    ASSERT_TRUE(t2 == second_tox);
+    ASSERT_TRUE(t3 == third_tox);
+
+    // Remove the test file
+    system("rm test.out");
 }
