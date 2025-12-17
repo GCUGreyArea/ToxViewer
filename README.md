@@ -1,5 +1,6 @@
 # TOX Client
 
+This is the main README.md file for the project. 
 
 ## Basic functionality
 
@@ -16,7 +17,11 @@ The library, `libtox_client.so`, which contains the `Tox` and `Socket` code is b
 
 ## Building and project dependancies
 
-The project depends on [Google Test](https://github.com/google/googletest) which can e installed with `sudo apt install libgtest-dev`  
+The project depends on [Google Test](https://github.com/google/googletest) which can e installed with `sudo apt install libgtest-dev`
+
+To build the program call `make`
+
+To build and run the unit tests call `make test`
 
 ## Functionality and how to use
 
