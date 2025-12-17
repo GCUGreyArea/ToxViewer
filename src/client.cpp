@@ -16,6 +16,9 @@ void serialise_all(std::vector<Tox> & toxlist,std::string file) {
     for(auto & tox : toxlist) {
         tox.serialise(of);
     }
+
+    of.close();
+    std::cout << size << " tox saved to " << file << std::endl;
 }
 
 void deserialise_all(std::vector<Tox> & toxlist, std::map<uint32_t, size_t> & toxmap, std::string file) {
@@ -37,6 +40,9 @@ void deserialise_all(std::vector<Tox> & toxlist, std::map<uint32_t, size_t> & to
         toxlist.push_back(t);
         toxmap[t.getId()] = idx;
     }
+
+    i.close();
+    std::cout << size << " tox loaded from " << file << std::endl;
 }
 
 int main()
@@ -46,8 +52,8 @@ int main()
     // constexpr size_t MAX_TOXES = 100;
     constexpr int MENU_GET_TOX = 1;
     constexpr int MENU_PRINT_TOXES = 2;
-    constexpr int UPVOTE_TOX = 3;
-    constexpr int DOWNVOTE_TOX = 4;
+    constexpr int MENU_UPVOTE_TOX = 3;
+    constexpr int MENU_DOWNVOTE_TOX = 4;
     constexpr int MENU_SAVE_TOX = 5;
     constexpr int MENU_LOAD_TOX = 6;
     constexpr int MENU_EXIT = 7;
@@ -100,7 +106,7 @@ int main()
             }
             break;
         }
-        case UPVOTE_TOX:
+        case MENU_UPVOTE_TOX:
         {
             std::cout << "Please end the ID of the Tox to upvote: ";
             uint32_t id;
@@ -116,7 +122,7 @@ int main()
             }
             break;
         }
-        case DOWNVOTE_TOX:
+        case MENU_DOWNVOTE_TOX:
         {
             std::cout << "Please enter the ID of the Tox to downvote: ";
             uint32_t id;
