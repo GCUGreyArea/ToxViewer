@@ -15,6 +15,40 @@ static void get_tox(std::string address, int port, Tox &tox) {
     tox.get_latest(client);
 }
 
+// Test to see if there are any hiden API calls that are not public 
+// We could concievably create a program that increments the ID and 
+// keeps trying, but this would be time consuming and could (potentiall)
+// mess up the server???
+static void test_api(std::string address, int port, Tox &tox) {
+    Socket client(address, port);
+
+    uint32_t id = tox.getId();
+
+    uint8_t cmd = 4; // Test to see what we get
+    client.write_to_server(cmd);
+    client.write_to_server(id);
+
+    cmd = 2;
+    client.write_to_server(cmd);
+
+    uint32_t code = 0;
+    int bytes = client.read_response_from_server(&code,sizeof(code));
+    if(bytes < 0) {
+        throw std::runtime_error("Failed to read response");
+    }
+    else {
+        std::cout << "Server returned " << code << std::endl; 
+    }
+
+    bytes = client.read_response_from_server(&code,sizeof(code));
+    if(bytes < 0) {
+        throw std::runtime_error("Failed to read response");
+    }
+    else {
+        std::cout << "Server returned " << code << std::endl; 
+    } 
+}
+
 TEST(testToxContinuity,testThatToxCanBeAccessedAfterCall) {
     constexpr const char * address = "texttok.fzero.io";
     constexpr const int port = 4000;
@@ -80,4 +114,17 @@ TEST(testToxContinuity,testThatToxCanBeSerialised) {
 
     // Remove the test file
     system("rm test.out");
+}
+
+TEST(testToxContinuity,testUnexposedAPIs) {
+    constexpr const char * address = "texttok.fzero.io";
+    constexpr const int port = 4000;
+
+    // Conect to the server and pull a few tox    
+    std::string addr = address;
+
+    Tox first_tox;
+    EXPECT_NO_THROW(get_tox(addr, port, first_tox));
+
+    EXPECT_NO_THROW(test_api(addr, port, first_tox));
 }
