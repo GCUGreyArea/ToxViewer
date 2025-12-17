@@ -2,3 +2,9 @@ build
 lib/build
 test/build
 benchmarks/build
+out.txt
+*.log
+*.tmp
+*.out
+*.o 
+*.obj
