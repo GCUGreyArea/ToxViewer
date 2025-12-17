@@ -1,10 +1,10 @@
 # TextTok 
 
-I am keeping this readme, along with all commits (which remain unsquashed) to make my actions in developing this software transparent. Possibly more likely refers to [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) 
+I am keeping this readme, along with all commits (which remain unsquashed) to make my actions in developing this software transparent.
 
 ## Initial analysis 
 
-I have not encountered `Tok` orn `TextTok` as protocols, but the [`public-api.md`](texttok/pulic-api.md) doc refers to `Tox`. A search seams to suggest that this is a protocol ([TokTok](https://toktok.ltd/spec.html)), but unsure if this is related.
+I have not encountered `Tok` orn `TextTok` as protocols, but the [`public-api.md`](texttok/pulic-api.md) doc refers to `Tox`. A search seams to suggest that this is a protocol ([TokTok](https://toktok.ltd/spec.html)), but unsure if this is related. Possibly more likely refers to [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)).
 
 ## Initial development
 
