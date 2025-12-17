@@ -7,3 +7,4 @@ out.txt
 *.o 
 *.obj
 *.so
+*.bin
