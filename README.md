@@ -1,6 +1,6 @@
 # TOX Client
 
-This is the main README.md file for the project. I have saved the initial [`README.md`](resources/README.md) under resources as a tracibility of work item. 
+This is the main README.md file for the project. I have saved the initial [`README.md`](resources/README.md) under resources as a tracibility of work item. All commits are kept and none of the work is squshed, again for tracibility of work.
 
 ## Basic functionality
 
