@@ -5,6 +5,8 @@
 
 #include <cstdint>
 #include <string>
+#include <ostream>
+#include <istream>
 
 // A place to put toxes
 class Tox {
@@ -30,6 +32,9 @@ public:
     std::string id_as_hex();
     // void get_rating(Socket &client);
     uint32_t get_rating() { return mRating; } 
+
+    void serialise(std::ostream & out);
+    void deserialise(std::istream & in);
 
 private:
     uint32_t mId;

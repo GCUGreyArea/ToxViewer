@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 Tox::Tox(Socket &client) {
     get_latest(client);
@@ -172,4 +173,35 @@ std::string Tox::id_as_hex() {
     std::stringstream ss;
     ss << std::hex << mId;
     return ss.str();
+}
+
+void Tox::serialise(std::ostream & out) {
+    out.write((char*) &mId,sizeof(mId));
+    out.write((char*)&mRating,sizeof(mRating));
+
+    size_t len = mMsg.length();
+    out.write((char*)&len,sizeof(len));
+    out.write(mMsg.data(),sizeof(char) * len);
+}
+
+void Tox::deserialise(std::istream & in) {
+    in.read((char*)&mId,sizeof(mId));
+    in.read((char*)&mRating,sizeof(mRating));
+
+    size_t len = 0;
+    in.read((char*)&len,sizeof(len));
+
+    if(len == 0) {
+        throw std::runtime_error("read of file returned 0");
+    }
+    char * msg = new char[len+1];
+    if(msg == nullptr) {
+        throw std::runtime_error("memory allocation failure");
+    } 
+
+    msg[len] = '\0';
+    in.read(msg,len);
+
+    mMsg = msg;
+    delete [] msg;
 }
