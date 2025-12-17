@@ -1,4 +1,4 @@
-NAME = tox_client 
+NAME = tox_client
 
 TARGET  = $(NAME)
 PWD = $(shell pwd)
@@ -12,7 +12,7 @@ BUILD      = $(PWD)/build
 
 TESTTARGET = $(PWD)/$(TESTDIR)/$(BUILD)/test_$(TARGET)
 BNCTARGET  = $(PWD)/$(BENCHDIR)/$(BUILD)/benchmark_$(TARGET)
-LIBTARGET  = $(PWD)/$(LIBDIR)/$(BUILD)/lib$(TARGET).so
+LIBTARGET  = $(PWD)/$(LIBDIR)/$(BUILD)/lib$(NAME).so
 DOCTARGET  = $(PWD)/$(DOXYDIR)/generated
 
 SRC = $(shell find src -name '*.cpp')
@@ -80,7 +80,8 @@ docs: $(DOCTARGET)
 test: $(TESTTARGET)
 	cd $(LIBDIR) && make
 	cd $(TESTDIR) && make
-
+	./test/build/test_$(TARGET) 
+	
 benchmark: $(BNCTARGET)
 	cd $(LIBDIR) && make
 	cd $(BENCHDIR) && make
