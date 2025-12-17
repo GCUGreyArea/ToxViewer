@@ -1,0 +1,17 @@
+cd /home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib && make 
+make[1]: Entering directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib'
+g++ -std=c++17 -fPIC -Wall -g -fsanitize=address -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib/src -g -fPIC build/src/Socket.o   -shared -o build/libtox_client.so
+make[1]: Leaving directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib'
+cd /home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib && make 
+make[1]: Entering directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib'
+g++ -std=c++17 -fPIC -Wall -g -fsanitize=address -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib/src -g -fPIC build/src/Socket.o   -shared -o build/libtox_client.so
+make[1]: Leaving directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib'
+cd /home/barry/workspace/code_chalange/task__steadyabnormalgoat/test && make
+make[1]: Entering directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/test'
+Linking test_tox_client ... with libraries: -lgtest -lpthread and: /home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib
+g++ -std=c++17 -fPIC -Wall -g -fsanitize=address -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib -I/home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib/src -fsanitize=address /home/barry/workspace/code_chalange/task__steadyabnormalgoat/test/build/src/test_main.o  -o /home/barry/workspace/code_chalange/task__steadyabnormalgoat/test/build/test_tox_client  -L/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib//home/barry/workspace/code_chalange/task__steadyabnormalgoat/test/build -ltox_client  -lgtest -lpthread -Wl,-rpath,/home/barry/workspace/code_chalange/task__steadyabnormalgoat/lib//home/barry/workspace/code_chalange/task__steadyabnormalgoat/test/build
+/usr/bin/ld: cannot find -ltox_client: No such file or directory
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:28: test_tox_client] Error 1
+make[1]: Leaving directory '/home/barry/workspace/code_chalange/task__steadyabnormalgoat/test'
+make: *** [Makefile:55: /home/barry/workspace/code_chalange/task__steadyabnormalgoat//home/barry/workspace/code_chalange/task__steadyabnormalgoat/test//home/barry/workspace/code_chalange/task__steadyabnormalgoat/build/test_tox_client] Error 2
