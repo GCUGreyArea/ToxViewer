@@ -36,6 +36,8 @@ public:
     void serialise(std::ostream & out);
     void deserialise(std::istream & in);
 
+protected:
+
 private:
     uint32_t mId;
     uint32_t mRating;
