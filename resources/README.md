@@ -1,6 +1,6 @@
 # TextTok 
 
-I am keeping this readme, along with all commits (which remain unsquashed) to make my actions in developing this software transparent. 
+I am keeping this readme, along with all commits (which remain unsquashed) to make my actions in developing this software transparent. Possibly more likely refers to [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) 
 
 ## Initial analysis 
 
