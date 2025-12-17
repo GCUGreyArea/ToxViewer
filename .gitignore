@@ -1,7 +1,5 @@
-build
-lib/build
-test/build
-benchmarks/build
+build/
+backup/
 out.txt
 *.log
 *.tmp
