@@ -55,17 +55,17 @@ int Socket::write_to_server(char *buffer)
         throw std::runtime_error("ERROR writing to socket");
     }
 
-    std::cout << "Bytes written to server: " << bytes << std::endl;
+    // std::cout << "Bytes written to server: " << bytes << std::endl;
     return bytes;
 }
 
 int Socket::read_response_from_server(void *buffer, size_t size)
 {
-    std::cout << "read_response_from_server : Reading bytes: " << size << std::endl;
+    // std::cout << "read_response_from_server : Reading bytes: " << size << std::endl;
     bzero(buffer, size);
     int bytes = read(mSocketFd, buffer, size);
 
-    std::cout << "read_response_from_server : Bytes read from server: " << bytes << std::endl;
+    // std::cout << "read_response_from_server : Bytes read from server: " << bytes << std::endl;
     if (bytes < 0)
     {
         throw std::runtime_error("ERROR reading from socket");
