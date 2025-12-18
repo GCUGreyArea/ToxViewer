@@ -117,6 +117,11 @@ EXits the probgram
 
 ## TODO 
 
-1. It would be nice to know if there is an API to pull the ratting for the tox?
-2. Tidy up the way in which data is sent and retrieved from the server. Currently this happens for convienience through sinlge calls to `write_to_server` and `read_from_Server` in the methods of the `Tox` class that `get` `pull` and `vote` on toxes. Ideally, for efficiency and programatic clenliness, the data should be moved into a single call for each protocol item anbd packed into a structure that is written to and read from the socket.
-3. There is currently little to no error checking. For isntance, the `deserialise` function in client does not validate the length of the file or test weather the contents are valid. 
+1. Fix all `-Wreorder` warnings caused by incorect order of variable initialisation.
+2. Display each Tox as they are initially pulled from the server.
+3. It would be nice to know if there is an API to pull the ratting for the tox without having to parse it from the text?
+4. Tidy up the way in which data is sent and retrieved from the server. Currently this happens for convienience through sinlge calls to `write_to_server` and `read_from_Server` in the methods of the `Tox` class that `get` `pull` and `vote` on toxes. Ideally, for efficiency and programatic clenliness, the data should be moved into a single call for each protocol item anbd packed into a structure that is written to and read from the socket.
+5. There is currently little to no error checking. For isntance, the `deserialise` function in client does not validate the length of the file or test weather the contents are valid. 
+6. The interface is currently not very intuative and is clunky
+    1. Make each tox display one at a time so that you can scroll through toxes that are already in the system, and rate them from the interface. 
+    2. This needs to have a forward and backward (next and previous) feature.
