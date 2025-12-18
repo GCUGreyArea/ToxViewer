@@ -40,7 +40,7 @@ protected:
 
 private:
     uint32_t mId;
-    int mRating;
+    uint32_t mRating;
     std::string mMsg;
 };
 
