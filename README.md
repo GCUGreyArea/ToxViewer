@@ -1,5 +1,9 @@
 # TOX Client
 
+![logo](resources/foundryzero.png)
+
+This was originaly created as a code chalange for Foundry Zero 
+
 This is the main README.md file for the project. I have saved the initial [`README.md`](resources/README.md) under resources as a tracibility of work item. All commits are kept and none of the work is squshed, again for tracibility. The program `tox_client` was developed and validated in `Ubunt 22.04` runing in `WSL2` on `Windows 11`.
 
 ## Basic functionality
